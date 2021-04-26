@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title%}Index {% endblock %}
+{% block main %}
+
+<div class="container">
+    <h1 class="text-center">LISTA DE LIVROS</h1>
+    <br>
+    <a href="{% url 'novo_livro' %}">Novo Livro</a>
+    <br>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Quantidade de Páginas</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Data de inclusão</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for livro in livros %}
+        <tbody>
+            <tr>
+                <th scope="row">{{livro.id}}</th>
+                <td>{{livro.nome}}</td>
+                <td>{{livro.autor}}</td>
+                <td>{{livro.qtd_pagina}}</td>
+                <td>{{livro.preco}}</td>
+                <td>{{livro.data_inclusao}}</td>
+                <td class="text-center"><a href="{% url 'editar_livro' livro.id %}"> Editar Livro </a><br></td>
+                <td class="text-center"><a href="{% url 'excluir_livro' livro.id %}"> Excluir Livro </a><br></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

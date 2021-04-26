@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title%}Index {% endblock %}
+{% block main %}
+<div class="container">
+    <h1 class="text-center">opcoes</h1>
+    <br>
+    <a href="{% url 'listar_autor' %}">Autores</a>
+    <br>
+    <a href="{% url 'listar_livro' %}">Livros</a>
+    <br>
+
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title%}Index {% endblock %}
+{% block main %}
+
+<div class="container">
+    <h1 class="text-center">LISTA DE AUTORES</h1>
+    <br>
+    <a href="{% url 'novo_autor' %}">Novo Autor</a>
+    <br>
+    <hr>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-center"></th>
+          <th class="text-center">ID</th>
+          <th class="text-center">Nome</th>
+          <th class="text-center"></th>
+          <th class="text-center"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for autor in autores %}
+        <tr>
+          <th scope="row"></th>
+          <td class="text-center">{{autor.id}}</td>
+          <td class="text-center">{{autor.nome}}</td>
+          <td class="text-center"><a href="{% url 'editar_autor' autor.id %}"> Editar Autor </a><br></td>
+          <td class="text-center"><a href="{% url 'excluir_autor' autor.id %}"> Excluir Autor </a><br></td>
+          <td class="text-center"></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}
